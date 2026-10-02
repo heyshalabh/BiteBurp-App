@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BiteBurp | Good Bites. Big Vibes. - Campus Food Startup</title>
+  <meta name="description" content="Fresh, affordable post-workout and evening snack boxes made for busy college days, gym sessions, and sudden hunger attacks. Campus-made and freshly packed.">
+  
+  <!-- Favicon Emoji -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥪</text></svg>">
+
+  <!-- Google Fonts: Poppins & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==================== DAILY AVAILABILITY TOP BAR ==================== -->
+  <aside class="availability-bar" aria-label="Daily Operating Status">
+    <div class="container availability-inner">
+      <div class="status-indicator">
+        <span class="status-dot pulse" id="statusDot"></span>
+        <span class="status-label">Today's Orders: <strong id="statusText">OPEN</strong></span>
+        <span class="badge-time"><i class="fa-regular fa-clock"></i> <span id="operatingHoursDisplay">6:00 PM – 8:00 PM</span></span>
+      </div>
+      <div class="stock-pill">
+        <i class="fa-solid fa-fire"></i>
+        <span>Limited daily batch: <strong id="stockDisplay">24 boxes left</strong></span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==================== STICKY NAVBAR ==================== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-logo" aria-label="BiteBurp Home">
+        <span class="brand-icon">🥪</span>
+        <span class="brand-name">BiteBurp<span class="brand-dot">.</span></span>
+        <span class="brand-tag">CAMPUS</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-links" id="navLinks">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#menu" class="nav-link">Menu</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#order-status" class="nav-link">Track Order</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <a href="#order" class="btn btn-primary nav-cta">
+          <span>Order Now</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <nav class="mobile-nav-links">
+        <a href="#hero" class="mobile-nav-link"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="#menu" class="mobile-nav-link"><i class="fa-solid fa-bowl-food"></i> Today's Menu</a>
+        <a href="#how-it-works" class="mobile-nav-link"><i class="fa-solid fa-list-check"></i> How It Works</a>
+        <a href="#order-status" class="mobile-nav-link"><i class="fa-solid fa-magnifying-glass"></i> Track Order</a>
+        <a href="#about" class="mobile-nav-link"><i class="fa-solid fa-heart"></i> About BiteBurp</a>
+        <a href="#faq" class="mobile-nav-link"><i class="fa-solid fa-circle-question"></i> FAQ</a>
+        <a href="#order" class="btn btn-primary btn-block mobile-drawer-btn">
+          <span>Order Now (<span class="config-price-text">₹59</span>)</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Backdrop for mobile menu -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+  <main>
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="badge-cluster">
+            <span class="sticker-pill sticker-yellow">
+              <i class="fa-solid fa-leaf"></i> Campus-made • Freshly packed
+            </span>
+            <span class="sticker-pill sticker-orange">
+              <i class="fa-regular fa-clock"></i> <span class="config-hours-text">6 PM — 8 PM</span>
+            </span>
+          </div>
+
+          <h1 class="hero-heading">
+            Good Bites.<br>
+            <span class="highlight-text">Big Vibes.</span>
+          </h1>
+
+          <p class="hero-subtext">
+            Fresh, affordable snacks made for busy college days, intense gym sessions, and random hostel hunger attacks.
+          </p>
+
+          <div class="hero-highlights">
+            <div class="highlight-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Student budget friendly</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Zero junk, clean fuel</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>2-min quick pickup</span>
+            </div>
+          </div>
+
+          <div class="hero-cta-group">
+            <a href="#order" class="btn btn-primary btn-large">
+              <span>Order Now</span>
+              <span class="btn-price-tag config-price-text">₹59</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="#menu" class="btn btn-secondary btn-large">
+              <span>See Menu</span>
+              <i class="fa-solid fa-utensils"></i>
+            </a>
+          </div>
+
+          <div class="hero-trust-proof">
+            <div class="avatar-stack">
+              <span class="avatar-circle">🎓</span>
+              <span class="avatar-circle">🏋️</span>
+              <span class="avatar-circle">⚡</span>
+            </div>
+            <p class="trust-text">Run by students for campus hostelers & fitness folks.</p>
+          </div>
+        </div>
+
+        <!-- Hero Playful Food Visual Card -->
+        <div class="hero-visual">
+          <div class="food-showcase-card">
+            <div class="card-sticker-tag">TODAY'S SPECIAL</div>
+            
+            <div class="visual-illustration-wrap">
+              <div class="illustration-art">
+                <div class="box-container">
+                  <div class="box-lid">
+                    <span class="burp-emoji">😋</span>
+                    <span class="box-label">BiteBurp Box</span>
+                  </div>
+                  <div class="food-elements">
+                    <span class="food-emoji food-banana" title="Ripe Banana">🍌</span>
+                    <span class="food-emoji food-oats" title="Rolled Oats">🥣</span>
+                    <span class="food-emoji food-peanut" title="Peanut Butter">🥜</span>
+                    <span class="food-emoji food-apple" title="Fresh Fruits">🍎</span>
+                    <span class="food-emoji food-seeds" title="Chia & Pumpkin Seeds">✨</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-meta">
+              <div class="card-info">
+                <h2 class="card-title config-product-title">BiteBurp Post-Workout Box</h2>
+                <p class="card-desc">Oats • Milk • Peanut Butter • Banana • Fruits • Seeds</p>
+              </div>
+              <div class="card-price-badge">
+                <span class="price-val config-price-text">₹59</span>
+                <span class="price-sub">per box</span>
+              </div>
+            </div>
+
+            <div class="card-footer-action">
+              <a href="#order" class="btn btn-outline btn-block">
+                <span>Lock In Today's Box</span>
+                <i class="fa-solid fa-bolt"></i>
+              </a>
+            </div>
+
+            <!-- Floating Sticker Elements -->
+            <div class="floating-badge badge-top-right">
+              <span>🔥 Evening Batch</span>
+            </div>
+            <div class="floating-badge badge-bottom-left">
+              <span>⚡ Ready in 2 Mins</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== MENU / FEATURED PRODUCT ==================== -->
+    <section class="section menu-section" id="menu">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-kicker">ON TODAY'S CAMPUS MENU</span>
+          <h2 class="section-title">The Evening Fuel You Deserve</h2>
+          <p class="section-subtitle">
+            Crafted for pure energy without feeling sluggish. Simple whole ingredients packed fresh each afternoon.
+          </p>
+        </div>
+
+        <div class="featured-product-wrapper">
+          <div class="product-card">
+            <div class="product-badge-bar">
+              <span class="badge badge-accent"><i class="fa-solid fa-star"></i> Student Favorite</span>
+              <span class="badge badge-soft"><i class="fa-regular fa-clock"></i> Available: <strong class="config-hours-text">6 PM – 8 PM</strong></span>
+            </div>
+
+            <div class="product-grid">
+              <div class="product-preview-box">
+                <div class="preview-visual">
+                  <div class="box-badge-fun">100% Real Food</div>
+                  <div class="illustration-large">
+                    <div class="box-mockup">
+                      <div class="box-tape">BITEBURP SEALED</div>
+                      <div class="box-content-visual">
+                        <div class="snack-icon">🥣</div>
+                        <div class="snack-title">Post-Workout Fuel</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="preview-note">
+                    <i class="fa-solid fa-shield-heart"></i> Freshly made each evening • Kept chilled
+                  </div>
+                </div>
+              </div>
+
+              <div class="product-details">
+                <div class="product-title-row">
+                  <h3 class="product-name config-product-title">BiteBurp Post-Workout Box</h3>
+                  <div class="product-price">
+                    <span class="currency">₹</span>
+                    <span class="amount config-price-val">59</span>
+                  </div>
+                </div>
+
+                <p class="product-description">
+                  A simple, filling snack box made with rolled oats, toned milk, rich peanut butter, ripe banana, freshly cut seasonal fruits, and roasted seeds. Perfect after an intense gym session or long lab hours.
+                </p>
+
+                <div class="ingredients-section">
+                  <h4 class="ingredients-label">WHAT'S INSIDE:</h4>
+                  <div class="ingredient-chips">
+                    <span class="chip"><i class="fa-solid fa-wheat-awn"></i> Rolled Oats</span>
+                    <span class="chip"><i class="fa-solid fa-glass-water"></i> Toned Milk</span>
+                    <span class="chip"><i class="fa-solid fa-jar"></i> Peanut Butter</span>
+                    <span class="chip">🍌 Fresh Banana</span>
+                    <span class="chip">🍎 Diced Fruits</span>
+                    <span class="chip">🌻 Pumpkin & Chia Seeds</span>
+                  </div>
+                </div>
+
+                <div class="quick-facts-grid">
+                  <div class="fact-box">
+                    <span class="fact-number">~14g</span>
+                    <span class="fact-label">Natural Protein</span>
+                  </div>
+                  <div class="fact-box">
+                    <span class="fact-number">0%</span>
+                    <span class="fact-label">Refined Sugar</span>
+                  </div>
+                  <div class="fact-box">
+                    <span class="fact-number">100%</span>
+                    <span class="fact-label">Affordable Fuel</span>
+                  </div>
+                </div>
+
+                <div class="product-actions">
+                  <button type="button" class="btn btn-primary btn-large btn-block" onclick="scrollToOrderWithProduct()">
+                    <span>Order This Box →</span>
+                    <span class="btn-subtext">(Instant Token)</span>
+                  </button>
+                  <p class="disclaimer-text">
+                    <i class="fa-solid fa-circle-info"></i> Whole food snack. No artificial supplements or synthetic additives.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PRODUCT IMAGE GALLERY ==================== -->
+    <section class="section gallery-section" id="gallery">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-kicker">BEHIND THE BURP</span>
+          <h2 class="section-title">Clean, Honest & Campus-Ready</h2>
+          <p class="section-subtitle">Real snapshots of how your evening box comes together.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Gallery Item 1 -->
+          <div class="gallery-card">
+            <div class="gallery-visual gallery-bg-1">
+              <span class="gallery-emoji">📦</span>
+              <span class="gallery-sticker">Step 1</span>
+            </div>
+            <div class="gallery-info">
+              <h3 class="gallery-title">The Box</h3>
+              <p class="gallery-desc">Compact eco-friendly food container sealed for portability and freshness.</p>
+            </div>
+          </div>
+
+          <!-- Gallery Item 2 -->
+          <div class="gallery-card">
+            <div class="gallery-visual gallery-bg-2">
+              <span class="gallery-emoji">🥜</span>
+              <span class="gallery-sticker">Wholesome</span>
+            </div>
+            <div class="gallery-info">
+              <h3 class="gallery-title">Ingredients</h3>
+              <p class="gallery-desc">Crunchy peanut butter, organic oats, handpicked fruits and seed blend.</p>
+            </div>
+          </div>
+
+          <!-- Gallery Item 3 -->
+          <div class="gallery-card">
+            <div class="gallery-visual gallery-bg-3">
+              <span class="gallery-emoji">❄️</span>
+              <span class="gallery-sticker">Chilled</span>
+            </div>
+            <div class="gallery-info">
+              <h3 class="gallery-title">Fresh Pack</h3>
+              <p class="gallery-desc">Prepped and chilled right before the 6 PM pickup window opens.</p>
+            </div>
+          </div>
+
+          <!-- Gallery Item 4 -->
+          <div class="gallery-card">
+            <div class="gallery-visual gallery-bg-4">
+              <span class="gallery-emoji">🏃‍♂️</span>
+              <span class="gallery-sticker">Grab & Go</span>
+            </div>
+            <div class="gallery-info">
+              <h3 class="gallery-title">Campus Delivery</h3>
+              <p class="gallery-desc">Convenient handover spots right near the gym and hostel gates.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== WHY BITEBURP ==================== -->
+    <section class="section why-section" id="why">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-kicker">WHY WE STARTED THIS</span>
+          <h2 class="section-title">Built for Real Campus Life</h2>
+          <p class="section-subtitle">Tired of oily mess canteen samosas and expensive gym cafe shakes? So were we.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon icon-coral">
+              <i class="fa-solid fa-box-open"></i>
+            </div>
+            <h3 class="feature-heading">Freshly Packed</h3>
+            <p class="feature-text">Prepared and packed fresh every evening. No soggy overnight storage or weird preservatives.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon icon-yellow">
+              <i class="fa-solid fa-wallet"></i>
+            </div>
+            <h3 class="feature-heading">Student Friendly</h3>
+            <p class="feature-text">Priced strictly for college pocket money. High nutrition density at canteen-level pricing.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon icon-green">
+              <i class="fa-solid fa-seedling"></i>
+            </div>
+            <h3 class="feature-heading">Simple Ingredients</h3>
+            <p class="feature-text">No hard-to-pronounce chemicals. Just real food you can see, recognize, and enjoy.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon icon-blue">
+              <i class="fa-solid fa-person-running"></i>
+            </div>
+            <h3 class="feature-heading">Quick Pickup</h3>
+            <p class="feature-text">Order online → Get a digital token → Flash token at the pickup spot → Grab and walk away in 20 seconds.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== HOW IT WORKS ==================== -->
+    <section class="section how-section" id="how-it-works">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-kicker">HOW IT WORKS</span>
+          <h2 class="section-title">4 Simple Steps to Get Your Bite</h2>
+          <p class="section-subtitle">No app download needed. Simple UPI order system designed for fast campus pickups.</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">01</div>
+            <div class="step-icon">
+              <i class="fa-solid fa-qrcode"></i>
+            </div>
+            <h3 class="step-title">Scan</h3>
+            <p class="step-description">Scan the QR from our hostel notice board or campus posters, or visit this link directly.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">02</div>
+            <div class="step-icon">
+              <i class="fa-solid fa-clipboard-list"></i>
+            </div>
+            <h3 class="step-title">Order</h3>
+            <p class="step-description">Choose your quantity, select your hostel or gym pickup point, and enter your name.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">03</div>
+            <div class="step-icon">
+              <i class="fa-solid fa-indian-rupee-sign"></i>
+            </div>
+            <h3 class="step-title">Pay</h3>
+            <p class="step-description">Pay via your favorite UPI app (GPay / PhonePe / Paytm) and paste your UTR reference ID.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">04</div>
+            <div class="step-icon">
+              <i class="fa-solid fa-hand-holding-heart"></i>
+            </div>
+            <h3 class="step-title">Collect</h3>
+            <p class="step-description">Instantly receive your #BB token. Show it to our volunteer between 6 PM – 8 PM and collect!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ORDER SECTION & PAYMENT FLOW ==================== -->
+    <section class="section order-section" id="order">
+      <div class="container">
+        <div class="order-wrapper">
+          
+          <div class="order-intro text-center">
+            <span class="section-kicker">ORDER YOUR BOX</span>
+            <h2 class="section-title">Place Your Order</h2>
+            <p class="section-subtitle">
+              Slots fill up fast for today's evening batch. Order before 6:00 PM for guaranteed pickup!
+            </p>
+          </div>
+
+          <!-- Main Interactive Order Box -->
+          <div class="order-card-container">
+            
+            <!-- STEP 1: ORDER DETAILS FORM -->
+            <div class="order-step-pane" id="orderFormStep">
+              <div class="step-badge-indicator">
+                <span class="step-pill active">Step 1: Order Details</span>
+                <span class="step-divider"><i class="fa-solid fa-arrow-right"></i></span>
+                <span class="step-pill">Step 2: UPI Payment</span>
+              </div>
+
+              <form id="orderForm" class="order-form" novalidate>
+                <div class="form-grid">
+                  <!-- Name Field -->
+                  <div class="form-group">
+                    <label for="custName" class="form-label">
+                      Your Full Name <span class="required">*</span>
+                    </label>
+                    <div class="input-wrap">
+                      <i class="fa-regular fa-user input-icon"></i>
+                      <input type="text" id="custName" class="form-input" placeholder="e.g. Rahul Sharma" required autocomplete="name">
+                    </div>
+                    <span class="error-msg" id="nameError">Please enter your name</span>
+                  </div>
+
+                  <!-- Phone Number Field -->
+                  <div class="form-group">
+                    <label for="custPhone" class="form-label">
+                      WhatsApp Phone Number <span class="required">*</span>
+                    </label>
+                    <div class="input-wrap">
+                      <i class="fa-solid fa-phone input-icon"></i>
+                      <input type="tel" id="custPhone" class="form-input" placeholder="10-digit number (e.g. 9876543210)" pattern="[0-9]{10}" required autocomplete="tel">
+                    </div>
+                    <span class="error-msg" id="phoneError">Enter a valid 10-digit mobile number</span>
+                  </div>
+
+                  <!-- Product Selection -->
+                  <div class="form-group">
+                    <label for="productSelect" class="form-label">
+                      Product Selected
+                    </label>
+                    <div class="input-wrap">
+                      <i class="fa-solid fa-bowl-food input-icon"></i>
+                      <select id="productSelect" class="form-input">
+                        <option value="BiteBurp Post-Workout Box" selected>BiteBurp Post-Workout Box (₹59)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Quantity Selector -->
+                  <div class="form-group">
+                    <label class="form-label">
+                      Quantity <span class="required">*</span>
+                    </label>
+                    <div class="quantity-control">
+                      <button type="button" class="qty-btn" id="qtyMinus" aria-label="Decrease quantity">
+                        <i class="fa-solid fa-minus"></i>
+                      </button>
+                      <input type="number" id="qtyInput" class="qty-number" value="1" min="1" max="10" readonly>
+                      <button type="button" class="qty-btn" id="qtyPlus" aria-label="Increase quantity">
+                        <i class="fa-solid fa-plus"></i>
+                      </button>
+                      <span class="qty-unit-label">box(es)</span>
+                    </div>
+                  </div>
+
+                  <!-- Pickup Location -->
+                  <div class="form-group full-width">
+                    <label for="pickupLocation" class="form-label">
+                      Preferred Campus Pickup Location <span class="required">*</span>
+                    </label>
+                    <div class="input-wrap">
+                      <i class="fa-solid fa-location-dot input-icon"></i>
+                      <select id="pickupLocation" class="form-input" required>
+                        <!-- Injected via JavaScript Config -->
+                      </select>
+                    </div>
+                    <span class="input-hint">Our volunteer stands with the BiteBurp cooler box at this spot from 6 PM to 8 PM.</span>
+                  </div>
+
+                  <!-- Optional Note -->
+                  <div class="form-group full-width">
+                    <label for="orderNote" class="form-label">
+                      Optional Note / Dietary Preference
+                    </label>
+                    <div class="input-wrap">
+                      <i class="fa-regular fa-comment input-icon"></i>
+                      <input type="text" id="orderNote" class="form-input" placeholder="e.g. Extra peanut butter if possible! Or No apple.">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Live Price Calculation Breakdown -->
+                <div class="price-summary-box">
+                  <div class="summary-line">
+                    <span class="summary-label">Item Price</span>
+                    <span class="summary-value" id="calcUnitLine">1 × ₹59</span>
+                  </div>
+                  <div class="summary-line">
+                    <span class="summary-label">Campus Delivery / Handover</span>
+                    <span class="summary-value free-tag">FREE (Campus Pickup)</span>
+                  </div>
+                  <div class="summary-divider"></div>
+                  <div class="summary-total-line">
+                    <span class="total-label">Total Payable</span>
+                    <span class="total-amount" id="calcTotalAmount">₹59</span>
+                  </div>
+                </div>
+
+                <!-- Form Action Button -->
+                <div class="form-actions">
+                  <button type="submit" class="btn btn-primary btn-large btn-block" id="proceedToPayBtn">
+                    <span>Proceed to UPI Payment</span>
+                    <span class="btn-subtext" id="btnTotalPreview">(Pay ₹59)</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- STEP 2: PAYMENT FLOW SECTION (Hidden initially) -->
+            <div class="order-step-pane hidden" id="paymentStep">
+              <div class="step-badge-indicator">
+                <span class="step-pill done"><i class="fa-solid fa-check"></i> Step 1: Details</span>
+                <span class="step-divider"><i class="fa-solid fa-arrow-right"></i></span>
+                <span class="step-pill active">Step 2: Pay Using UPI</span>
+              </div>
+
+              <div class="payment-card-layout">
+                <div class="payment-instructions">
+                  <h3 class="payment-heading">Scan & Pay via any UPI App</h3>
+                  <p class="payment-subtext">
+                    Open Google Pay, PhonePe, Paytm, or BHIM. Scan the QR code or pay directly to our campus UPI ID.
+                  </p>
+
+                  <div class="amount-due-banner">
+                    <span class="amount-due-label">Amount to Pay</span>
+                    <span class="amount-due-val" id="payAmountDisplay">₹59</span>
+                  </div>
+
+                  <!-- UPI ID with Copy Action -->
+                  <div class="upi-id-box">
+                    <div class="upi-info">
+                      <span class="upi-label">UPI ID</span>
+                      <strong class="upi-text" id="upiIdText">biteburp@upi</strong>
+                    </div>
+                    <button type="button" class="btn-copy-upi" id="copyUpiBtn" title="Copy UPI ID">
+                      <i class="fa-regular fa-copy"></i>
+                      <span>Copy</span>
+                    </button>
+                  </div>
+
+                  <!-- UPI Quick Pay Links (for mobile browsers) -->
+                  <div class="upi-deep-links">
+                    <a href="#" id="upiDeepLink" class="btn btn-secondary btn-block">
+                      <i class="fa-solid fa-mobile-screen-button"></i>
+                      <span>Tap to Pay on UPI App</span>
+                    </a>
+                  </div>
+
+                  <!-- V1 Notice -->
+                  <div class="v1-notice">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span><strong>Student Startup V1:</strong> Manual UPI confirmation. Once you pay, paste your 12-digit UTR/Transaction ID below to generate your token.</span>
+                  </div>
+                </div>
+
+                <div class="payment-qr-side">
+                  <div class="qr-frame">
+                    <div class="qr-canvas-holder">
+                      <img id="upiQrImage" src="" alt="Scan UPI QR Code to Pay BiteBurp" class="qr-img">
+                      <div class="qr-overlay-logo">🥪</div>
+                    </div>
+                    <p class="qr-caption">Scan with GPay / PhonePe / Paytm</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Transaction ID Submission Form -->
+              <form id="paymentConfirmForm" class="payment-confirm-form">
+                <div class="form-group full-width">
+                  <label for="txnIdInput" class="form-label">
+                    Enter UPI Transaction / UTR / Reference ID <span class="required">*</span>
+                  </label>
+                  <div class="input-wrap">
+                    <i class="fa-solid fa-receipt input-icon"></i>
+                    <input type="text" id="txnIdInput" class="form-input" placeholder="e.g. 4289XXXXXXXX or 12-digit Ref No." required maxlength="30">
+                  </div>
+                  <span class="error-msg" id="txnError">Please enter the UTR / Transaction Reference ID from your UPI app receipt</span>
+                  <span class="input-hint">You can find this in your Google Pay / PhonePe / Paytm transaction history after paying.</span>
+                </div>
+
+                <div class="payment-action-buttons">
+                  <button type="button" class="btn btn-outline" id="backToDetailsBtn">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Edit Details</span>
+                  </button>
+                  <button type="submit" class="btn btn-primary btn-large" id="confirmPaymentBtn">
+                    <span>Confirm Payment & Get Token</span>
+                    <i class="fa-solid fa-ticket"></i>
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- STEP 3: TOKEN / ORDER CONFIRMATION (Hidden initially) -->
+            <div class="order-step-pane hidden" id="confirmationStep">
+              <div class="confirmation-card">
+                <div class="conf-celebration">
+                  <span class="celebration-emoji">🎉</span>
+                </div>
+                <h3 class="conf-title">Order Confirmed!</h3>
+                <p class="conf-subtitle">We have received your order details and payment submission.</p>
+
+                <!-- Prominent Token Display -->
+                <div class="token-hero-box">
+                  <span class="token-label">YOUR PICKUP TOKEN</span>
+                  <div class="token-code-row">
+                    <span class="token-value" id="confTokenNumber">#BB-104</span>
+                    <button type="button" class="btn-copy-token" id="copyTokenBtn" title="Copy Token Number">
+                      <i class="fa-regular fa-copy"></i> Copy Token
+                    </button>
+                  </div>
+                  <p class="token-instruction">
+                    <i class="fa-solid fa-bullhorn"></i> <strong>Show this token</strong> to our volunteer when collecting your box.
+                  </p>
+                </div>
+
+                <!-- Order Receipt Details -->
+                <div class="order-receipt-details">
+                  <div class="receipt-row">
+                    <span class="r-label"><i class="fa-regular fa-user"></i> Customer Name:</span>
+                    <span class="r-val" id="confCustName">Rahul Sharma</span>
+                  </div>
+                  <div class="receipt-row">
+                    <span class="r-label"><i class="fa-solid fa-bowl-food"></i> Product & Qty:</span>
+                    <span class="r-val" id="confProductQty">1 × BiteBurp Post-Workout Box</span>
+                  </div>
+                  <div class="receipt-row">
+                    <span class="r-label"><i class="fa-solid fa-indian-rupee-sign"></i> Total Paid:</span>
+                    <span class="r-val bold-val" id="confTotalPaid">₹59</span>
+                  </div>
+                  <div class="receipt-row">
+                    <span class="r-label"><i class="fa-solid fa-location-dot"></i> Pickup Spot:</span>
+                    <span class="r-val" id="confPickupLoc">Campus Gym Entrance</span>
+                  </div>
+                  <div class="receipt-row">
+                    <span class="r-label"><i class="fa-regular fa-clock"></i> Pickup Window:</span>
+                    <span class="r-val bold-val"><span class="config-hours-text">6 PM – 8 PM</span> Today</span>
+                  </div>
+                  <div class="receipt-row">
+                    <span class="r-label"><i class="fa-solid fa-receipt"></i> UTR Reference:</span>
+                    <span class="r-val mono-val" id="confTxnId">4289XXXXXXXX</span>
+                  </div>
+                  <div class="receipt-row">
+                    <span class="r-label"><i class="fa-solid fa-circle-check"></i> Payment Status:</span>
+                    <span class="r-val status-badge-submitted"><i class="fa-solid fa-hourglass-half"></i> Submitted (Under Verification)</span>
+                  </div>
+                </div>
+
+                <div class="confirmation-actions">
+                  <button type="button" class="btn btn-primary" onclick="trackCurrentToken()">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                    <span>Track Order Status</span>
+                  </button>
+                  <button type="button" class="btn btn-outline" onclick="resetToNewOrder()">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Place Another Order</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ORDER STATUS LOOKUP ==================== -->
+    <section class="section status-section" id="order-status">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-kicker">REAL-TIME TRACKING</span>
+          <h2 class="section-title">Check Order Status</h2>
+          <p class="section-subtitle">
+            Enter your token number (e.g. <code>#BB-101</code>) to see where your snack box is right now.
+          </p>
+        </div>
+
+        <div class="tracker-card">
+          <form id="trackOrderForm" class="track-form" onsubmit="event.preventDefault(); handleLookupOrder();">
+            <div class="track-input-group">
+              <div class="input-wrap flex-1">
+                <i class="fa-solid fa-hashtag input-icon"></i>
+                <input type="text" id="trackTokenInput" class="form-input" placeholder="Enter Token (e.g. #BB-101 or BB-101)" required>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Check Order</span>
+              </button>
+            </div>
+            <div class="demo-tokens-hint">
+              <span>Try recent tokens:</span>
+              <button type="button" class="btn-text-token" onclick="fillAndCheckToken('#BB-101')">#BB-101</button>
+              <button type="button" class="btn-text-token" onclick="fillAndCheckToken('#BB-102')">#BB-102</button>
+              <button type="button" class="btn-text-token" onclick="fillAndCheckToken('#BB-103')">#BB-103</button>
+            </div>
+          </form>
+
+          <!-- Tracker Result Display -->
+          <div id="trackerResult" class="tracker-result-box hidden">
+            <div class="tracker-meta-header">
+              <div>
+                <span class="status-token-tag" id="trackDispToken">#BB-101</span>
+                <span class="track-disp-customer" id="trackDispCustomer">Rahul S.</span>
+              </div>
+              <div class="track-disp-time" id="trackDispTime">Ordered: Today, 5:15 PM</div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-stepper" id="progressStepper">
+              <div class="stepper-step" data-step="1">
+                <div class="step-circle"><i class="fa-solid fa-check"></i></div>
+                <div class="step-text">
+                  <strong>Order Received</strong>
+                  <small>Details registered</small>
+                </div>
+              </div>
+              <div class="stepper-step" data-step="2">
+                <div class="step-circle"><i class="fa-solid fa-check"></i></div>
+                <div class="step-text">
+                  <strong>Payment Verification</strong>
+                  <small>UPI UTR checked</small>
+                </div>
+              </div>
+              <div class="stepper-step" data-step="3">
+                <div class="step-circle"><i class="fa-solid fa-bowl-food"></i></div>
+                <div class="step-text">
+                  <strong>Preparing</strong>
+                  <small>Fresh packing</small>
+                </div>
+              </div>
+              <div class="stepper-step" data-step="4">
+                <div class="step-circle"><i class="fa-solid fa-bell"></i></div>
+                <div class="step-text">
+                  <strong>Ready for Pickup</strong>
+                  <small>At spot (6-8 PM)</small>
+                </div>
+              </div>
+              <div class="stepper-step" data-step="5">
+                <div class="step-circle"><i class="fa-solid fa-face-smile"></i></div>
+                <div class="step-text">
+                  <strong>Collected</strong>
+                  <small>Burp & enjoy!</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Live Status Alert Card -->
+            <div class="status-alert-box" id="statusAlertBox">
+              <i class="fa-solid fa-circle-info"></i>
+              <span id="statusAlertText">Your order has been recorded. Our team is packing your fresh box.</span>
+            </div>
+
+            <!-- Tracker Details Table -->
+            <div class="tracker-quick-details">
+              <div class="detail-cell">
+                <span class="lbl">Items:</span>
+                <span class="val" id="trackDispItems">1 × BiteBurp Post-Workout Box</span>
+              </div>
+              <div class="detail-cell">
+                <span class="lbl">Pickup Spot:</span>
+                <span class="val" id="trackDispLocation">Campus Gym Entrance</span>
+              </div>
+              <div class="detail-cell">
+                <span class="lbl">Timing:</span>
+                <span class="val"><span class="config-hours-text">6 PM – 8 PM</span> Today</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CAMPUS QR / POSTER SECTION ==================== -->
+    <section class="section campus-qr-section" id="campus-qr">
+      <div class="container">
+        <div class="poster-banner-card">
+          <div class="poster-content">
+            <span class="poster-tag"><i class="fa-solid fa-fire"></i> CAMPUS POSTER CTA</span>
+            <h2 class="poster-heading">Hungry after the gym?</h2>
+            <p class="poster-punchline">
+              “Scan. Order. Grab your BiteBurp.”
+            </p>
+            <p class="poster-text">
+              Spot our posters on hostel bulletin boards, gym notice boards, and sports complexes. Or save this link to your phone home screen for instant 1-tap ordering.
+            </p>
+
+            <div class="poster-features">
+              <div class="p-item">⚡ 30-sec order flow</div>
+              <div class="p-item">💰 ₹59 student price</div>
+              <div class="p-item">📍 4 campus spots</div>
+            </div>
+
+            <div class="poster-actions">
+              <a href="#order" class="btn btn-primary">
+                <span>Order Your Box Right Now</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="poster-qr-visual">
+            <div class="poster-frame">
+              <div class="poster-header-chip">BITEBURP FAST PASS</div>
+              <div class="poster-qr-code">
+                <!-- Fallback / Static Poster QR rendering -->
+                <img id="posterQrImg" src="" alt="Scan BiteBurp Campus QR" class="poster-img">
+              </div>
+              <p class="poster-scan-text"><i class="fa-solid fa-camera"></i> Scan to order directly</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT BITEBURP ==================== -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-content">
+            <span class="section-kicker">OUR CAMPUS STORY</span>
+            <h2 class="section-title">Made for Campus Life.</h2>
+            
+            <p class="about-paragraph">
+              BiteBurp started in a regular campus hostel room out of pure frustration. Every evening around 6:30 PM after working out or grinding through endless assignment deadlines, our only food choices were either oily canteen fried food or overpriced protein bars from the convenience store.
+            </p>
+
+            <p class="about-paragraph">
+              We asked ourselves: <em>Why can't we just have a fresh, filling, healthy snack box made with everyday natural ingredients, priced affordably for a college pocket?</em>
+            </p>
+
+            <p class="about-paragraph">
+              So we bought fresh oats, honest peanut butter, ripe bananas, and seeds, packed them neatly, and gave them to our friends in the hostel. They loved it. That was day one of BiteBurp.
+            </p>
+
+            <div class="about-values">
+              <div class="val-card">
+                <span class="val-emoji">🌱</span>
+                <strong>Zero Nonsense</strong>
+                <p>No chemical powders or misleading fitness buzzwords. Just honest fuel.</p>
+              </div>
+              <div class="val-card">
+                <span class="val-emoji">🤝</span>
+                <strong>Student-Powered</strong>
+                <p>Prepared, packed and managed entirely by students right here on campus.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-visual-side">
+            <div class="student-vibe-card">
+              <div class="vibe-header">
+                <span class="vibe-pill">CAMPUS DISPATCH</span>
+                <span class="vibe-date">Established 2026</span>
+              </div>
+              <div class="vibe-quote">
+                “Good food doesn’t need a fancy corporate board. It just needs clean ingredients, student prices, and good vibes.”
+              </div>
+              <div class="vibe-author">
+                <div class="author-avatar">🥪</div>
+                <div class="author-details">
+                  <strong>The BiteBurp Student Team</strong>
+                  <small>Campus Food Project</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== REVIEWS ==================== -->
+    <section class="section reviews-section" id="reviews">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-kicker">CAMPUS BUZZ</span>
+          <h2 class="section-title">What Early Testers Say</h2>
+          <p class="section-subtitle">A few real reactions from our hostel wing mates and gym buddies.</p>
+        </div>
+
+        <div class="reviews-grid">
+          <!-- Review Card 1 -->
+          <div class="review-card">
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">
+              “Really convenient after gym. I used to skip evening fuel or eat oily canteen rolls. This fills you up clean and doesn’t sit heavy.”
+            </p>
+            <div class="reviewer-meta">
+              <div class="rev-avatar">🏋️‍♂️</div>
+              <div>
+                <strong class="rev-name">Aman V.</strong>
+                <span class="rev-tag">Gym Regular • Hostel 4</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review Card 2 -->
+          <div class="review-card">
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">
+              “Simple, filling and affordable. ₹59 is less than a cold coffee and actually keeps me energized through 9 PM study sessions.”
+            </p>
+            <div class="reviewer-meta">
+              <div class="rev-avatar">📚</div>
+              <div>
+                <strong class="rev-name">Sneha K.</strong>
+                <span class="rev-tag">3rd Year CS • Day Scholar</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review Card 3 -->
+          <div class="review-card">
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">
+              “Didn't expect a college food startup to be this organized 😂 Token system is super smooth — took 15 seconds to grab my box.”
+            </p>
+            <div class="reviewer-meta">
+              <div class="rev-avatar">⚡</div>
+              <div>
+                <strong class="rev-name">Tanmay P.</strong>
+                <span class="rev-tag">Hostel Block C</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FEEDBACK SECTION ==================== -->
+    <section class="section feedback-section" id="feedback">
+      <div class="container">
+        <div class="feedback-card">
+          <div class="feedback-header text-center">
+            <span class="section-kicker">HELP US IMPROVE</span>
+            <h2 class="section-title">Drop Your Honest Feedback</h2>
+            <p class="section-subtitle">
+              Have suggestions for new snack boxes, tastes, or pickup spots? Let us know!
+            </p>
+          </div>
+
+          <form id="feedbackForm" class="feedback-form" onsubmit="event.preventDefault(); handleFeedbackSubmit();">
+            <div class="feedback-grid">
+              <div class="form-group">
+                <label for="fbName" class="form-label">Your Name (Optional)</label>
+                <div class="input-wrap">
+                  <i class="fa-regular fa-user input-icon"></i>
+                  <input type="text" id="fbName" class="form-input" placeholder="Anonymous or your name">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">How was your experience? <span class="required">*</span></label>
+                <div class="rating-selector" id="ratingSelector">
+                  <button type="button" class="rating-btn" data-rate="1" title="1 Star">⭐</button>
+                  <button type="button" class="rating-btn" data-rate="2" title="2 Stars">⭐⭐</button>
+                  <button type="button" class="rating-btn" data-rate="3" title="3 Stars">⭐⭐⭐</button>
+                  <button type="button" class="rating-btn" data-rate="4" title="4 Stars">⭐⭐⭐⭐</button>
+                  <button type="button" class="rating-btn active" data-rate="5" title="5 Stars">⭐⭐⭐⭐⭐</button>
+                  <input type="hidden" id="fbRatingVal" value="5">
+                </div>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="fbComment" class="form-label">Your Feedback / Suggestion <span class="required">*</span></label>
+                <div class="input-wrap">
+                  <textarea id="fbComment" class="form-textarea" rows="3" placeholder="Tell us what you liked or what we should add to our menu..." required></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="feedback-submit-wrap text-center">
+              <button type="submit" class="btn btn-primary btn-large">
+                <i class="fa-regular fa-paper-plane"></i>
+                <span>Send Feedback</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FAQ ACCORDION ==================== -->
+    <section class="section faq-section" id="faq">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-kicker">QUESTIONS & ANSWERS</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">Everything you need to know about ordering and picking up BiteBurp.</p>
+        </div>
+
+        <div class="faq-accordion" id="faqAccordion">
+          
+          <!-- Item 1 -->
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>What time can I order?</span>
+              <i class="fa-solid fa-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-answer">
+              <p>You can place your order anytime before 6:00 PM for the evening batch. Order distribution and pickups happen daily between <strong class="config-hours-text">6:00 PM and 8:00 PM</strong> at our campus pickup spots.</p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>Where do I collect my order?</span>
+              <i class="fa-solid fa-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-answer">
+              <p>During checkout, you can select your preferred pickup point: Campus Gym Entrance, Hostel Block C Lawn, SAC Portico, or Library Back Stand. A BiteBurp volunteer with a cooler box will be waiting there with your token ready.</p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>How do I pay?</span>
+              <i class="fa-solid fa-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-answer">
+              <p>We use simple direct UPI payments. When placing an order, scan the UPI QR code using Google Pay, PhonePe, Paytm, or BHIM, make the payment of ₹59, and submit the 12-digit transaction/UTR reference ID to receive your pickup token.</p>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>What is the token used for?</span>
+              <i class="fa-solid fa-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Your token (e.g., <code>#BB-104</code>) is your digital claim ticket. Just show it on your phone or say your token number when you arrive at the pickup spot to grab your box instantly without waiting in queues.</p>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>Can I order multiple boxes?</span>
+              <i class="fa-solid fa-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Yes! You can increase the quantity in the order form (up to 10 boxes per order) for your gym buddy or roommate. The total amount updates automatically.</p>
+            </div>
+          </div>
+
+          <!-- Item 6 -->
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>What happens if the product is sold out?</span>
+              <i class="fa-solid fa-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Because we prepare everything fresh each day to avoid food waste, we operate with a limited daily batch (usually 25–50 boxes). If stock runs out, the status bar will show "SOLD OUT" and orders will open again the next morning.</p>
+            </div>
+          </div>
+
+          <!-- Item 7 -->
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>Can I suggest a new product?</span>
+              <i class="fa-solid fa-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Absolutely! We love student feedback. Scroll down to our Feedback section or message us on Instagram/WhatsApp with your favorite snack ideas.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="brand-icon">🥪</span>
+            <span class="brand-name">BiteBurp<span class="brand-dot">.</span></span>
+          </div>
+          <p class="footer-tagline">“Good Bites. Big Vibes.”</p>
+          <p class="footer-desc">
+            A small student-run campus food initiative bringing fresh, affordable evening snacks to college life.
+          </p>
+        </div>
+
+        <div class="footer-links-group">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-nav">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#menu">Today's Menu</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#order">Order Online</a></li>
+            <li><a href="#order-status">Track Order</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-group">
+          <h4 class="footer-heading">Connect With Us</h4>
+          <ul class="footer-nav">
+            <li>
+              <a href="#" id="footerInstagram" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-instagram"></i> Instagram (@biteburp)
+              </a>
+            </li>
+            <li>
+              <a href="#" id="footerWhatsapp" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp Updates
+              </a>
+            </li>
+            <li>
+              <a href="#feedback">
+                <i class="fa-regular fa-comment-dots"></i> Send Feedback
+              </a>
+            </li>
+            <li>
+              <a href="#campus-qr">
+                <i class="fa-solid fa-qrcode"></i> Campus QR Poster
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-dev-credit">
+          Developed by <strong>Shalabh Suman</strong>
+        </div>
+        <div class="footer-copyright">
+          © 2026 BiteBurp. All rights reserved. Made with ❤️ on campus.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MOBILE FLOATING ORDER BAR ==================== -->
+  <aside class="mobile-sticky-bar" id="mobileStickyBar" aria-label="Quick order for mobile">
+    <div class="sticky-bar-info">
+      <span class="sticky-product config-product-title">Post-Workout Box</span>
+      <span class="sticky-price config-price-text">₹59</span>
+    </div>
+    <a href="#order" class="btn btn-primary sticky-btn">
+      <span>Order Now</span>
+      <i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </aside>
+
+  <!-- ==================== TOAST NOTIFICATION CONTAINER ==================== -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>

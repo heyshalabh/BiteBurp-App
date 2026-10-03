@@ -1,0 +1,81 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        request.auth.token.admin == true ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    // Admin allowlist documents — only readable by the owner uid, writable only via Admin SDK / Console
+    match /admins/{uid} {
+      allow read: if isSignedIn() && request.auth.uid == uid;
+      allow write: if false; // manage via Firebase Console or Admin SDK only
+    }
+
+    // Products — public read; admin write
+    match /products/{productId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // Orders
+    // - Anyone can create an order (validated fields only) for guest checkout
+    // - Customers can read ONLY by knowing the token is enforced in app;
+    //   rules still prevent listing all orders.
+    // - Admin full access
+    match /orders/{orderId} {
+      allow create: if request.resource.data.keys().hasAll([
+          'token', 'name', 'phone', 'product', 'quantity', 'total', 'status'
+        ])
+        && request.resource.data.token is string
+        && request.resource.data.quantity is number
+        && request.resource.data.quantity >= 1
+        && request.resource.data.quantity <= 20
+        && request.resource.data.total is number
+        && request.resource.data.total > 0
+        && request.resource.data.total < 100000
+        // Clients cannot mark as paid — paymentStatus set only by Cloud Functions / admin
+        && (!('paymentStatus' in request.resource.data)
+            || request.resource.data.paymentStatus == 'pending'
+            || request.resource.data.paymentStatus == 'awaiting_verification');
+
+      // No public list/query of all orders. Token lookup should go through
+      // a Cloud Function or carefully scoped query. For simplicity, allow
+      // get of a single doc if you know the id; list only for admin.
+      allow get: if isAdmin() || true; // single-doc get; avoid publishing doc ids
+      allow list: if isAdmin();
+      allow update, delete: if isAdmin();
+    }
+
+    // Feedback — public create, admin read/list
+    match /feedback/{id} {
+      allow create: if request.resource.data.keys().hasAll(['rating', 'comment'])
+        && request.resource.data.rating is number
+        && request.resource.data.rating >= 1
+        && request.resource.data.rating <= 5
+        && request.resource.data.comment is string
+        && request.resource.data.comment.size() > 0
+        && request.resource.data.comment.size() < 2000;
+      allow read, list: if isAdmin();
+      allow update, delete: if isAdmin();
+    }
+
+    // Site content — public read, admin write
+    match /siteContent/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Customers — only the user themselves or admin
+    match /customers/{uid} {
+      allow read, write: if isAdmin() || (isSignedIn() && request.auth.uid == uid);
+    }
+  }
+}

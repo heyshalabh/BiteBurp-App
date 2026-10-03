@@ -43,7 +43,7 @@
       <a href="#hero" class="brand-logo" aria-label="BiteBurp Home">
         <span class="brand-icon">🥪</span>
         <span class="brand-name">BiteBurp<span class="brand-dot">.</span></span>
-        <span class="brand-tag">CAMPUS</span>
+        
       </a>
 
       <!-- Desktop Navigation -->
@@ -447,7 +447,7 @@
               <i class="fa-solid fa-hand-holding-heart"></i>
             </div>
             <h3 class="step-title">Collect</h3>
-            <p class="step-description">Instantly receive your #BB token. Show it to our volunteer between 6 PM – 8 PM and collect!</p>
+            <p class="step-description">Instantly receive your BB tracking token. Show it to our volunteer between 6 PM – 8 PM and collect!</p>
           </div>
         </div>
       </div>
@@ -685,7 +685,7 @@
                 <div class="token-hero-box">
                   <span class="token-label">YOUR PICKUP TOKEN</span>
                   <div class="token-code-row">
-                    <span class="token-value" id="confTokenNumber">#BB-104</span>
+                    <span class="token-value" id="confTokenNumber">BB482917</span>
                     <button type="button" class="btn-copy-token" id="copyTokenBtn" title="Copy Token Number">
                       <i class="fa-regular fa-copy"></i> Copy Token
                     </button>
@@ -752,7 +752,7 @@
           <span class="section-kicker">REAL-TIME TRACKING</span>
           <h2 class="section-title">Check Order Status</h2>
           <p class="section-subtitle">
-            Enter your token number (e.g. <code>#BB-101</code>) to see where your snack box is right now.
+            Enter your token number (e.g. <code>BB482917</code>) to see where your snack box is right now.
           </p>
         </div>
 
@@ -761,7 +761,7 @@
             <div class="track-input-group">
               <div class="input-wrap flex-1">
                 <i class="fa-solid fa-hashtag input-icon"></i>
-                <input type="text" id="trackTokenInput" class="form-input" placeholder="Enter Token (e.g. #BB-101 or BB-101)" required>
+                <input type="text" id="trackTokenInput" class="form-input" placeholder="Enter Token (e.g. BB482917)" required>
               </div>
               <button type="submit" class="btn btn-primary">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -770,9 +770,9 @@
             </div>
             <div class="demo-tokens-hint">
               <span>Try recent tokens:</span>
-              <button type="button" class="btn-text-token" onclick="fillAndCheckToken('#BB-101')">#BB-101</button>
-              <button type="button" class="btn-text-token" onclick="fillAndCheckToken('#BB-102')">#BB-102</button>
-              <button type="button" class="btn-text-token" onclick="fillAndCheckToken('#BB-103')">#BB-103</button>
+              <button type="button" class="btn-text-token" onclick="fillAndCheckToken('BB482917')">BB482917</button>
+              <button type="button" class="btn-text-token" onclick="fillAndCheckToken('BB730154')">BB730154</button>
+              <button type="button" class="btn-text-token" onclick="fillAndCheckToken('BB194826')">BB194826</button>
             </div>
           </form>
 
@@ -780,7 +780,7 @@
           <div id="trackerResult" class="tracker-result-box hidden">
             <div class="tracker-meta-header">
               <div>
-                <span class="status-token-tag" id="trackDispToken">#BB-101</span>
+                <span class="status-token-tag" id="trackDispToken">BB482917</span>
                 <span class="track-disp-customer" id="trackDispCustomer">Rahul S.</span>
               </div>
               <div class="track-disp-time" id="trackDispTime">Ordered: Today, 5:15 PM</div>
@@ -887,6 +887,28 @@
                 <img id="posterQrImg" src="" alt="Scan BiteBurp Campus QR" class="poster-img">
               </div>
               <p class="poster-scan-text"><i class="fa-solid fa-camera"></i> Scan to order directly</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== BITEBURP STORY / MAKING VIDEO ==================== -->
+    <section class="section story-video-section" id="story-video">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-kicker">THE BITEBURP STORY</span>
+          <h2 class="section-title">How We Make Your Bites</h2>
+          <p class="section-subtitle">A quick look at our kitchen, ingredients, and the vibe behind every box.</p>
+        </div>
+        <div class="story-video-card" id="storyVideoCard">
+          <div class="story-video-wrap" id="storyVideoWrap">
+            <!-- Populated by JS from BITEBURP_CONFIG.storyVideoUrl -->
+            <div class="story-video-placeholder" id="storyVideoPlaceholder">
+              <div class="placeholder-icon">🎬</div>
+              <p>Video coming soon</p>
+              <small>Configure <code>storyVideoUrl</code> in script.js</small>
             </div>
           </div>
         </div>
@@ -1049,14 +1071,15 @@
 
               <div class="form-group">
                 <label class="form-label">How was your experience? <span class="required">*</span></label>
-                <div class="rating-selector" id="ratingSelector">
-                  <button type="button" class="rating-btn" data-rate="1" title="1 Star">⭐</button>
-                  <button type="button" class="rating-btn" data-rate="2" title="2 Stars">⭐⭐</button>
-                  <button type="button" class="rating-btn" data-rate="3" title="3 Stars">⭐⭐⭐</button>
-                  <button type="button" class="rating-btn" data-rate="4" title="4 Stars">⭐⭐⭐⭐</button>
-                  <button type="button" class="rating-btn active" data-rate="5" title="5 Stars">⭐⭐⭐⭐⭐</button>
+                <div class="rating-selector" id="ratingSelector" role="radiogroup" aria-label="Star rating">
+                  <button type="button" class="star-btn" data-rate="1" aria-label="1 star" title="1 star">★</button>
+                  <button type="button" class="star-btn" data-rate="2" aria-label="2 stars" title="2 stars">★</button>
+                  <button type="button" class="star-btn" data-rate="3" aria-label="3 stars" title="3 stars">★</button>
+                  <button type="button" class="star-btn" data-rate="4" aria-label="4 stars" title="4 stars">★</button>
+                  <button type="button" class="star-btn active" data-rate="5" aria-label="5 stars" title="5 stars">★</button>
                   <input type="hidden" id="fbRatingVal" value="5">
                 </div>
+                <p class="rating-hint" id="ratingHint">5 stars — Amazing!</p>
               </div>
 
               <div class="form-group full-width">
@@ -1129,7 +1152,7 @@
               <i class="fa-solid fa-chevron-down faq-chevron"></i>
             </button>
             <div class="faq-answer">
-              <p>Your token (e.g., <code>#BB-104</code>) is your digital claim ticket. Just show it on your phone or say your token number when you arrive at the pickup spot to grab your box instantly without waiting in queues.</p>
+              <p>Your token (e.g., <code>BB482917</code>) is your digital claim ticket. Just show it on your phone or say your token number when you arrive at the pickup spot to grab your box instantly without waiting in queues.</p>
             </div>
           </div>
 
@@ -1225,6 +1248,12 @@
         </div>
       </div>
 
+      <div class="footer-support-row">
+        <button type="button" class="btn btn-outline btn-sm donate-trigger" id="donateTriggerBtn">
+          <i class="fa-solid fa-heart"></i>
+          <span>Support BiteBurp</span>
+        </button>
+      </div>
       <div class="footer-bottom">
         <div class="footer-dev-credit">
           Developed by <strong>Shalabh Suman</strong>
@@ -1253,5 +1282,25 @@
 
   <!-- Main JavaScript File -->
   <script src="script.js"></script>
+
+  <!-- ==================== DONATION / SUPPORT MODAL ==================== -->
+  <div class="modal-overlay hidden" id="donateModal" role="dialog" aria-modal="true" aria-labelledby="donateModalTitle">
+    <div class="modal-card donate-modal-card">
+      <button type="button" class="modal-close" id="donateModalClose" aria-label="Close">&times;</button>
+      <h3 id="donateModalTitle" class="modal-title">Support BiteBurp ❤️</h3>
+      <p class="modal-text">If you like what we do, a small tip helps us keep prices student-friendly and packs fresher.</p>
+      <div class="donate-qr-wrap" id="donateQrWrap">
+        <img id="donateQrImg" src="" alt="Donation QR" class="donate-qr-img hidden">
+        <p class="donate-qr-fallback" id="donateQrFallback">QR not configured yet</p>
+      </div>
+      <div class="donate-link-wrap" id="donateLinkWrap">
+        <a href="#" id="donateLinkBtn" class="btn btn-primary btn-block" target="_blank" rel="noopener">
+          <i class="fa-solid fa-heart"></i>
+          <span>Open Payment Link</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

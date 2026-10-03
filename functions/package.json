@@ -1,0 +1,12 @@
+{
+  "name": "biteburp-functions",
+  "description": "BiteBurp secure payment Cloud Functions",
+  "engines": { "node": "18" },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^12.0.0",
+    "firebase-functions": "^4.6.0",
+    "razorpay": "^2.9.2"
+  },
+  "private": true
+}
